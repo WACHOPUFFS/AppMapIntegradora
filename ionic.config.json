@@ -1,0 +1,7 @@
+{
+  "name": "proyectoMapas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
