@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'publicaciones',
     loadChildren: () => import('./publicaciones/publicaciones.module').then( m => m.PublicacionesPageModule)
   },
+  {
+    path: 'ver-publicacion',
+    loadChildren: () => import('./ver-publicacion/ver-publicacion.module').then( m => m.VerPublicacionPageModule)
+  },
+  {
+    path: 'conversacion',
+    loadChildren: () => import('./conversacion/conversacion.module').then( m => m.ConversacionPageModule)
+  },
 ];
 
 @NgModule({

@@ -20,6 +20,7 @@
     left: 15px;
     display: flex;
     align-items: center;
+    
 
     img{
         width: 80px;
@@ -27,12 +28,15 @@
         border-radius: 50%;
         border: 7px solid #307976;
         margin-right: 14px;
+        
+        
        
     }
 
     h2{
         font-weight: 300;
         color: #fff;
+        
     }
 
     p{
@@ -58,9 +62,12 @@
         --box-shadow: none;
     }
     ion-icon{
-        margin-right: 1px;
+        margin-right: 20px;
+        
     }
     ion-item{
-        margin-right: 1px;
+        margin-right: 10px;
+        padding: 10px;
+
     }
 }

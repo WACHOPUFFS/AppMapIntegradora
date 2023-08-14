@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true">
+<div class="header ion-padding">
+  <div class="info">
+    <ion-buttons slot="start" class="menu_btn">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-avatar>
+      <img src="../../assets/image/perfil.png" alt="">
+    </ion-avatar>
+    <span class="details">
+      <h1>Myrilingui</h1>
+      <p>Myriam</p>
+    </span>
+  </div>
+  <div class="calling">
+    <ion-icon name="camera-outline">
+      <ion-input type="file" accept="image/*"></ion-input>
+    </ion-icon>
+    
+  </div>
+</div>
+
+<div class="conversation ion-padding">
+  <div class="chat-section" id="chat">
+    <div class="chat">
+      <div class="yours messages">
+        <div class="message other">
+          Hola
+        </div>
+        <div class="message other">
+          Hubo un choque en Av.Jilo
+        </div>
+        <div class="message other">
+          Hay mucho trafico
+        </div>
+        <div class="message other">
+          <img src="../../assets/image/4.jpeg" alt="">
+        </div>
+         <!-- ///////////////////////////////////////////// -->
+        <div class="last-message-other">
+          <ion-avatar>
+            <img src="https://i.pravatar.cc/545" alt="">
+          </ion-avatar>
+          <div class="message last">
+            Estuvo muy feo?
+          </div>
+          
+        </div>
+        
+        <!-- ///////////////////////////////////////////// -->
+        <span>1:40 PM</span>
+      </div>
+      <div class="mine messages">
+        <div class="message">
+          Yo acabo de pasar y esta muy feo el trafico
+        </div>
+        <div class="message last">
+          <img src="../../assets/image/2.jpeg" alt="">
+        </div>
+        <span>
+          <ion-icon name="checkmark-done-outline"></ion-icon>2:00 PM
+        </span>
+      </div>
+
+      <!-- //////////////////////////////////////////////////// -->
+      <div class="yours messages">
+         <!-- ///////////////////////////////////////////// -->
+        <div class="last-message-other">
+          <ion-avatar>
+            <img src="https://i.pravatar.cc/348" alt="">
+          </ion-avatar>
+          <div class="message last">
+            Muchas gracias!
+          </div>
+        </div>
+        <!-- ///////////////////////////////////////////// -->
+        <span>2:10 PM</span>
+      </div>
+
+    </div>
+  </div>
+  <div class="message-input">
+    <ion-input placeholder="Escribe tu mensaje..."></ion-input>
+    <div class="send-button">
+      <ion-icon name="send-sharp" routerLink="/inicio"></ion-icon>
+    </div>
+  </div>
+</div>
+</ion-content>
