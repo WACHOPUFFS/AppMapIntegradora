@@ -23,6 +23,14 @@ const routes: Routes = [
     path: 'recuperar-p',
     loadChildren: () => import('./recuperar-p/recuperar-p.module').then( m => m.RecuperarPPageModule)
   },
+  {
+    path: 'newpost',
+    loadChildren: () => import('./newpost/newpost.module').then( m => m.NewpostPageModule)
+  },
+  {
+    path: 'publicaciones',
+    loadChildren: () => import('./publicaciones/publicaciones.module').then( m => m.PublicacionesPageModule)
+  },
 ];
 
 @NgModule({
