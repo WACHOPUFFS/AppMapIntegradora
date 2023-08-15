@@ -1,0 +1,32 @@
+ion-content {
+  --background: linear-gradient(to right, #254f4e, #329996);
+
+  .main_content_div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
+    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+    height: 100vh;
+
+    .menu_btn {
+      margin-top: 1px;
+      align-self: flex-start;
+      z-index: 1;
+    }
+
+    .map {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      background-color: transparent;
+      opacity: 1;
+      transition: opacity 150ms ease-in;
+    }
+
+    .bienvenido {
+      font-size: 18px; /* Reduzco el tamaño del texto */
+      color: white;
+      font-weight: 600;
+    }
+  }
+}

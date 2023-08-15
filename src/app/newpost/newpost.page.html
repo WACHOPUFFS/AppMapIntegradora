@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="main_content_div">
+    <ion-buttons slot="start" class="menu_btn">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+
+    <div class="user_div">
+   
+    </div>
+    <div class="content_div">
+      <ion-label class="mapa">Nueva publicacion</ion-label>
+      <ion-grid fixed>
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-input placeholder="Ingresa el título"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-input placeholder="Ingresa el subtítulo"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-textarea placeholder="Ingresa la descripción" rows="4"></ion-textarea>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="stacked"></ion-label>
+            <ion-datetime display-format="MMM DD, YYYY" placeholder="Selecciona la fecha"></ion-datetime>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label position="stacked">Agregar Imagen</ion-label>
+            <ion-input type="file" accept="image/*"></ion-input>
+          </ion-item>
+      
+          <ion-button expand="full">Publicar</ion-button>
+        </ion-list>
+      
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>
