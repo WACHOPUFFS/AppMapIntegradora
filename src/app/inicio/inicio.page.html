@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <ion-content>
   <div class="main_content_div">
     <ion-buttons slot="start" class="menu_btn">
@@ -9,12 +12,13 @@
         <ion-label class="TRAFFIC">Traffic</ion-label>
         <ion-label class="bienvenido">Bienvenido</ion-label>
       </div>
+      
       <div class="user_back" [style.backgroundImage]="'url(assets/image/Designer.png)'"></div>
     </div>
     <div class="content_div">
       <ion-label class="mapa">Hola! Activa tu ubicacion para tener una mejor experiencia</ion-label>
       <ion-grid fixed>
-        <img src="../../assets/image/mapa.png">
+        <div class="map" #map></div>
       
       </ion-grid>
     </div>
