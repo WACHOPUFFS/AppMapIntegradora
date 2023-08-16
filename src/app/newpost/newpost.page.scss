@@ -1,0 +1,121 @@
+ion-content{
+  --background:linear-gradient(to right, #254f4e,#329996);
+}
+
+.main_content_div{
+  width: 100%;
+
+  .menu_btn{
+    position: relative;
+    top: 20px;
+    left: 10px;
+  }
+
+  ion-label{
+    display: block;
+    color: #254f4e;
+    text-align: center;
+  }
+
+  .user_div{
+    padding: 10px;
+    width: 100%;
+    height: 100px;
+    background:linear-gradient(to right, #254f4e,#329996);
+    display: flex;
+    padding-top: 40px;
+    justify-content: space-between;
+    
+    .first_div{
+      padding-top: 35px;
+
+      .TRAFFIC{
+        font-size: 18px;
+        color: white;
+        font-weight: 500;
+        text-align: left;
+      }
+      .bienvenido{
+        font-size: 24px;
+        color: white;
+        font-weight: 600;
+      }
+    }
+
+    .user_back{
+      height: 100px;
+      width: 100px;
+      border: 3px solid white;
+      background-position: top;
+      background-size: cover;
+      background-repeat: no-repeat;
+      border-radius: 100px;
+    }
+
+  }
+  .content_div{
+    background-color: white;
+    width: 100%;
+    border-top-right-radius: 60px;
+    border-top-left-radius: 60px;
+    margin-top: -80px;
+    padding-top:30px ;
+
+    .mapa{
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding-left: 5px;
+      margin-top: 10px;
+    }
+  }
+
+}
+.post-form {
+  padding: 20px;
+
+  ion-item {
+    margin-bottom: 20px;
+
+    ion-datetime {
+      display: block;
+      margin: 0 auto; /* Centra horizontalmente */
+      text-align: center; /* Centra el texto dentro del componente */
+    }
+  }
+
+  ion-label {
+    font-weight: bold;
+  }
+
+  ion-input, ion-textarea, ion-datetime, ion-button[type="file"] {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  ion-input[type="file"] {
+    cursor: pointer;
+  }
+
+  .publish-button {
+      
+          display: flex;
+          justify-content: center;
+          margin-bottom: 20px;
+      
+          ion-button{
+              transform: capitalize;
+              font-weight: 300;
+              --background: #307976;
+              --border-radius: 7px;
+              --box-shadow: none;
+          }
+          ion-icon{
+              margin-right: 1px;
+          }
+          ion-item{
+              margin-right: 1px;
+          }
+      }
+  }
