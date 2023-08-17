@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular'; // Asegúrate de importar ToastController
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-newpost',
@@ -15,13 +15,13 @@ export class NewpostPage implements OnInit {
     subtituloP: '',
     descripcionP: '',
     fechaP: '',
-    //imagen: null,
+    imagenP: null,
   };
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private toastController: ToastController // Agrega el servicio ToastController aquí
+    private toastController: ToastController
   ) { }
 
   ngOnInit() {
@@ -43,23 +43,33 @@ export class NewpostPage implements OnInit {
     this.presentNotificationToast(tip);
   }
 
-  publicar() {
-    const data = {
-      titulopublicacion: this.publicacion.tituloP,
-      subtitulopublicacion: this.publicacion.subtituloP,
-      descripcionpublicacion: this.publicacion.descripcionP,
-      fechapublicacion: this.publicacion.fechaP,
-      //formData.append('imagen', this.publicacion.imagen)
+  handleFileInput(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.publicacion.imagenP = file;
     }
+  }
 
-    this.http.post('http://localhost:3000/publicar', data).subscribe(
+  publicar() {
+    const formData = new FormData();
+    formData.append('titulopublicacion', this.publicacion.tituloP);
+    formData.append('subtitulopublicacion', this.publicacion.subtituloP);
+    formData.append('descripcionpublicacion', this.publicacion.descripcionP);
+    formData.append('fechapublicacion', this.publicacion.fechaP);
+    formData.append('imagen', this.publicacion.imagenP);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json',
+      }),
+    };
+
+    this.http.post('http://localhost:3000/publicar', formData, httpOptions).subscribe(
       (response) => {
         console.log(response);
         
-        // Ejecutar la notificación al finalizar la publicación
         this.showNotification();
         
-        // Redirigir a la página deseada después de publicar
         this.router.navigate(['/post']);
       },
       (error) => {
@@ -67,9 +77,4 @@ export class NewpostPage implements OnInit {
       }
     );
   }
-
-   //handleFileInput(files: FileList) {
-    // Manejar la selección de archivos
-    //this.publicacion.imagen = files.item(0);
-  //}
 }

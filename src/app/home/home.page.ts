@@ -77,7 +77,7 @@ export class HomePage implements OnInit, OnDestroy {
   addMarker(location) {
     let googleMaps: any = this.googleMaps;
     const icon = {
-      url: 'assets/icons/location-pin.png',
+      url: 'assets/icons/crash-icon.png',
       scaledSize: new googleMaps.Size(50, 50), 
     };
     const marker = new googleMaps.Marker({

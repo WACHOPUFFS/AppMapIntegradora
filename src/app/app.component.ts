@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { UserService } from 'src/app/services/auth/user.service';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,9 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  username: string;
+  fullName: string;
 
   private tips: string[] = [
     'Recuerda siempre usar el cinturón de seguridad.',
@@ -26,11 +30,23 @@ export class AppComponent {
     'Usa el cinturón de seguridad en todos los asientos del vehículo.',
   ];
   
-  constructor(public toastController: ToastController) {}
+  constructor(
+    public toastController: ToastController,
+    private userService: UserService
+  ) {}
+
 
   ngOnInit() {
+    this.userService.getUserData().subscribe((userData: any) => {
+      if (userData.success) {
+        this.username = userData.user.nombreUsuario;
+        this.fullName = userData.user.nombreCompleto;
+      }
+    });
+  
     this.scheduleNotifications();
   }
+
 
   async showNotification(message: string) {
     const toast = await this.toastController.create({

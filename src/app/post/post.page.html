@@ -3,26 +3,29 @@
     <ion-buttons slot="start" class="menu_btn">
       <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
-<ion-content [fullscreen]="true">
-  <div class="user_div">
-    <div class="first_div">
-      <ion-label class="TRAFFIC">Ciudad Juarez</ion-label>
-      <ion-label class="bienvenido">Publicaciones</ion-label>
+    <div class="user_div">
+      <div class="first_div">
+        <ion-label class="TRAFFIC">Ciudad Juarez</ion-label>
+        <ion-label class="bienvenido">Publicaciones</ion-label>
+      </div>
+      <div class="user_back" [style.backgroundImage]="'url(assets/image/Designer.png)'"></div>
     </div>
-    <div class="user_back" [style.backgroundImage]="'url(assets/image/Designer.png)'"></div>
-  </div>
-  <div class="content_div">
-    <ion-label class="mapa">Lo que pasa hoy en Ciudad Juarez</ion-label>
+    <div class="content_div">
+      <ion-label class="mapa">Lo que pasa hoy en Ciudad Juarez</ion-label>
 
-    <!-- Utiliza *ngFor para iterar sobre las publicaciones -->
-    <ion-item class="publicacion-item" *ngFor="let publicacion of publicaciones">
-      <ion-label>
-        <h2>{{ publicacion.titulopublicacion }}</h2>
-        <p>{{ publicacion.subtitulopublicacion }}</p>
-        <p>{{ publicacion.descripcionpublicacion }}</p>
-        <p>{{ publicacion.fechapublicacion }}</p>
-      </ion-label>
-    </ion-item>
-  
+      <!-- Utiliza *ngFor para iterar sobre las publicaciones -->
+      <ion-item class="publicacion-item" *ngFor="let publicacion of publicaciones">
+        <ion-thumbnail slot="start">
+          <!-- Muestra la imagen utilizando la propiedad "imagen" de la publicación -->
+          <img [src]="publicacion.imagen" alt="Imagen de la publicación">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{ publicacion.titulopublicacion }}</h2>
+          <p>{{ publicacion.subtitulopublicacion }}</p>
+          <p>{{ publicacion.descripcionpublicacion }}</p>
+          <p>{{ publicacion.fechapublicacion }}</p>
+        </ion-label>
+      </ion-item>
+    </div>
   </div>
 </ion-content>

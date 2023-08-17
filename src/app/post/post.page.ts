@@ -19,11 +19,13 @@ export class PostPage implements OnInit {
     this.http.get('http://localhost:3000/obtenerPublicaciones').subscribe(
       (data: any) => {
         this.publicaciones = data; // Asignar los datos obtenidos a la variable
+
+        // Invertir el orden del arreglo para mostrar las más nuevas primero
+        this.publicaciones.reverse();
       },
       (error) => {
         console.error(error);
       }
     );
   }
-
 }

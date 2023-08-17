@@ -4,43 +4,39 @@
       <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
 
-    <div class="user_div">
-   
-    </div>
+    <div class="user_div"></div>
     <div class="content_div">
-      <ion-label class="mapa">Nueva publicacion</ion-label>
+      <ion-label class="mapa">Nueva publicación</ion-label>
       <ion-grid fixed>
         <ion-list>
           <ion-item>
-            <ion-label position="stacked"></ion-label>
+            <ion-label position="stacked">Título</ion-label>
             <ion-input name="tituloP" type="text" placeholder="Ingresa el título" [(ngModel)]="publicacion.tituloP"></ion-input>
           </ion-item>
           
           <ion-item>
-            <ion-label position="stacked"></ion-label>
+            <ion-label position="stacked">Subtítulo</ion-label>
             <ion-input name="subtituloP" type="text" placeholder="Ingresa el subtítulo" [(ngModel)]="publicacion.subtituloP"></ion-input>
           </ion-item>
           
           <ion-item>
-            <ion-label position="stacked"></ion-label>
+            <ion-label position="stacked">Descripción</ion-label>
             <ion-textarea name="descripcionP" type="text" placeholder="Ingresa la descripción" rows="4" [(ngModel)]="publicacion.descripcionP"></ion-textarea>
           </ion-item>
           
           <ion-item>
-            <ion-label position="stacked"></ion-label>
+            <ion-label position="stacked">Fecha</ion-label>
             <ion-datetime name="fechaP" display-format="MMM DD, YYYY" placeholder="Selecciona la fecha" [(ngModel)]="publicacion.fechaP"></ion-datetime>
           </ion-item>
           
-          <!--<ion-item>
-            <ion-label position="stacked">Agregar Imagen</ion-label>
-            <ion-input type="file" accept="image/*"></ion-input>
-          </ion-item> -->
-      
+          <ion-item>
+            <ion-label position="stacked">Imagen</ion-label>
+            <input type="file" name="imagenP" (change)="handleFileInput($event)" accept="image/*">
+          </ion-item>
           
-          <ion-button expand="full" (click)="publicar()" >Publicar</ion-button>
-
-        </ion-list>
       
+          <ion-button expand="full" (click)="publicar()">Publicar</ion-button>
+        </ion-list>
       </ion-grid>
     </div>
   </div>
