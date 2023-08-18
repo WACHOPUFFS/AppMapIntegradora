@@ -4,18 +4,19 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-newpost',
-  templateUrl: './newpost.page.html',
+  selector: 'app-newpost', 
+  templateUrl: './newpost.page.html', 
   styleUrls: ['./newpost.page.scss'],
 })
 export class NewpostPage implements OnInit {
 
+  // Objeto para almacenar la información de la publicación
   publicacion = {
     tituloP: '',
-    subtituloP: '',
-    descripcionP: '',
-    fechaP: '',
-    imagenP: null,
+    subtituloP: '', 
+    descripcionP: '', 
+    fechaP: '', 
+    imagenP: null, 
   };
 
   constructor(
@@ -27,6 +28,7 @@ export class NewpostPage implements OnInit {
   ngOnInit() {
   }
 
+  // Mostrar un mensaje emergente de notificación
   async presentNotificationToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
@@ -38,11 +40,13 @@ export class NewpostPage implements OnInit {
     await toast.present();
   }
 
+  // Mostrar una notificación de nueva publicación
   showNotification() {
     const tip = 'Se ha publicado un nuevo post';
     this.presentNotificationToast(tip);
   }
 
+  // Manejar la selección de un archivo de imagen
   handleFileInput(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -50,6 +54,7 @@ export class NewpostPage implements OnInit {
     }
   }
 
+  // Método para publicar una nueva publicación
   publicar() {
     const formData = new FormData();
     formData.append('titulopublicacion', this.publicacion.tituloP);
@@ -64,12 +69,12 @@ export class NewpostPage implements OnInit {
       }),
     };
 
+    // Realizar una solicitud HTTP POST para publicar la nueva publicación
     this.http.post('http://localhost:3000/publicar', formData, httpOptions).subscribe(
       (response) => {
         console.log(response);
-        
+
         this.showNotification();
-        
         this.router.navigate(['/post']);
       },
       (error) => {

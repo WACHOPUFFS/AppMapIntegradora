@@ -21,7 +21,8 @@ export class LoginPage {
   };
 
   constructor(private router: Router, private http: HttpClient, private userService: UserService) {}
-
+  
+  // Método para iniciar sesión
   iniciarSesion() {
     console.log('Cargando inicio');
     const data = {

@@ -9,10 +9,12 @@ import { UserService } from 'src/app/services/auth/user.service';
 })
 export class AppComponent {
 
+  //variables para el usuario para que se muestre en el side menu
   username: string;
   fullName: string;
 
   private tips: string[] = [
+    //Tips de notificaciones para los usuarios
     'Recuerda siempre usar el cinturón de seguridad.',
     'Respeta los límites de velocidad y las señales de tránsito.',
     'Mantén una distancia segura entre vehículos.',
@@ -37,6 +39,7 @@ export class AppComponent {
 
 
   ngOnInit() {
+    // Obtener los datos del usuario al inicializar el componente
     this.userService.getUserData().subscribe((userData: any) => {
       if (userData.success) {
         this.username = userData.user.nombreUsuario;
@@ -47,12 +50,12 @@ export class AppComponent {
     this.scheduleNotifications();
   }
 
-
+   // Función para mostrar una notificación emergente
   async showNotification(message: string) {
     const toast = await this.toastController.create({
       message: message,
       duration: 6000,
-      position: 'top',
+      position: 'bottom',
       cssClass: 'custom-toast',
       buttons: [
         {
@@ -68,15 +71,16 @@ export class AppComponent {
     await toast.present();
   }
 
-  scheduleNotifications() {
-    let index = 0;
 
+// Función para programar y mostrar notificaciones periódicas
+  scheduleNotifications() {
     setInterval(() => {
-      const tip = this.tips[index % this.tips.length];
-      this.showNotification(tip);
-      index++;
-    }, 60000); // Muestra la notificación cada 1 minuto (60000 ms)
+      const randomIndex = Math.floor(Math.random() * this.tips.length); // Obtener un índice aleatorio
+      const randomTip = this.tips[randomIndex]; // Obtener un consejo aleatorio
+      this.showNotification(randomTip);
+    }, 60000);
   }
+
 
 
 }

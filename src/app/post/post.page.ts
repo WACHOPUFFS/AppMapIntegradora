@@ -15,10 +15,11 @@ export class PostPage implements OnInit {
     this.obtenerPublicaciones();
   }
 
+  // Método para obtener las publicaciones desde el servidor
   obtenerPublicaciones() {
     this.http.get('http://localhost:3000/obtenerPublicaciones').subscribe(
       (data: any) => {
-        this.publicaciones = data; // Asignar los datos obtenidos a la variable
+        this.publicaciones = data; 
 
         // Invertir el orden del arreglo para mostrar las más nuevas primero
         this.publicaciones.reverse();

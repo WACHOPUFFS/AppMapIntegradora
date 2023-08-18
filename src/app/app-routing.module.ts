@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',  // Cambia 'home' a 'login'
+    redirectTo: 'login',  // se cambio 'home' a 'login'
     pathMatch: 'full'
   },
   {
@@ -26,10 +26,6 @@ const routes: Routes = [
   {
     path: 'newpost',
     loadChildren: () => import('./newpost/newpost.module').then( m => m.NewpostPageModule)
-  },
-  {
-    path: 'seepost',
-    loadChildren: () => import('./seepost/seepost.module').then( m => m.SeepostPageModule)
   },
 ];
 

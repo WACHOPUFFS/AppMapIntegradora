@@ -8,12 +8,14 @@ export class GmapsService {
 
   constructor() { }
 
+// Verificar si el módulo de Google Maps ya está cargado
   loadGoogleMaps(): Promise<any> {
     const win = window as any;
     const gModule = win.google;
     if(gModule && gModule.maps) {
      return Promise.resolve(gModule.maps);
     }
+    // Si no está cargado, se cargara el SDK de Google Maps
     return new Promise((resolve, reject) => {
       const script = document.createElement('script');
       script.src =

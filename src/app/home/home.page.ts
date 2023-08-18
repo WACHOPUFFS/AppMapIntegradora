@@ -11,6 +11,7 @@ const DEFAULT_LONGITUDE = -106.4245; // Coordenada de Ciudad Juárez
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
 export class HomePage implements OnInit, OnDestroy {
 
   @ViewChild('map', {static: true}) mapElementRef: ElementRef;
@@ -28,6 +29,7 @@ export class HomePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    
   }
 
   ngAfterViewInit() {
@@ -53,14 +55,14 @@ export class HomePage implements OnInit, OnDestroy {
         // Utilizar coordenadas de Ciudad Juárez por defecto
         location = new googleMaps.LatLng(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
       }
-
+      // Crear un nuevo mapa
       this.map = new googleMaps.Map(mapEl, {
         center: location,
         zoom: 12,
       });
 
       this.renderer.addClass(mapEl, 'visible');
-      this.addMarker(location);
+      this.UserMarker(location);
       this.onMapClick();
     } catch (e) {
       console.log(e);
@@ -68,12 +70,14 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   onMapClick() {
+    // Configurar los clics en el mapa
     this.mapClickListener = this.googleMaps.event.addListener(this.map, "click", (mapsMouseEvent) => {
       console.log(mapsMouseEvent.latLng.toJSON());
       this.addMarker(mapsMouseEvent.latLng);
     });
   }
 
+  // Metodo para añadir un marcador
   addMarker(location) {
     let googleMaps: any = this.googleMaps;
     const icon = {
@@ -84,11 +88,11 @@ export class HomePage implements OnInit, OnDestroy {
       position: location,
       map: this.map,
       icon: icon,
-      // draggable: true,
+      draggable: true,
       animation: googleMaps.Animation.DROP
     });
     this.markers.push(marker);
-    // this.presentActionSheet();
+    //this.presentActionSheet();
     this.markerClickListener = this.googleMaps.event.addListener(marker, 'click', () => {
       console.log('markerclick', marker);
       this.checkAndRemoveMarker(marker);
@@ -96,7 +100,27 @@ export class HomePage implements OnInit, OnDestroy {
     });
   }
 
+   // Metodo del marcador del usuario
+   UserMarker(location) {
+    let googleMaps: any = this.googleMaps;
+    const icon = {
+      url: 'assets/icons/location-pin.png',
+      scaledSize: new googleMaps.Size(50, 50), 
+    };
+    const marker = new googleMaps.Marker({
+      position: location,
+      map: this.map,
+      icon: icon,
+      //draggable: true,
+      animation: googleMaps.Animation.DROP
+    });
+  }
+
+
+
+
   checkAndRemoveMarker(marker) {
+    // Verificar y eliminar el marcador
     const index = this.markers.findIndex(x => x.position.lat() == marker.position.lat() && x.position.lng() == marker.position.lng());
     console.log('is marker already: ', index);
     if(index >= 0) {
@@ -106,26 +130,28 @@ export class HomePage implements OnInit, OnDestroy {
     }
   }
 
+
+  // Mostrar una hoja de acciones -- No se utiliza o no se piensa utilizar ahorita
   async presentActionSheet() {
     const actionSheet = await this.actionSheetCtrl.create({
-      header: 'Added Marker',
+      header: 'Añadir nuevo marcador',
       subHeader: '',
       buttons: [
         {
-          text: 'Remove',
+          text: 'Remover',
           role: 'destructive',
           data: {
             action: 'delete',
           },
         },
         {
-          text: 'Save',
+          text: 'Guardar',
           data: {
             action: 'share',
           },
         },
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           data: {
             action: 'cancel',

@@ -3,24 +3,28 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
+  selector: 'app-register', 
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
 
+  // Objeto para almacenar la información del usuario
   usuario = {
-    nombreU: '',
-    nombreC: '',
-    correoElectronico: '',
+    nombreU: '', 
+    nombreC: '', 
+    correoElectronico: '', 
     contrasena: '',
   };
 
+  
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
+    
   }
 
+  // Método para registrar al usuario
   registrarUsuario() {
     const data = {
       nombreUsuario: this.usuario.nombreU,
@@ -29,6 +33,7 @@ export class RegisterPage implements OnInit {
       contraseña: this.usuario.contrasena,
     };
 
+    // Realizar una solicitud HTTP POST al servidor para registrar al usuario
     this.http.post('http://localhost:3000/registrar', data).subscribe(
       (response) => {
         console.log(response);
@@ -37,7 +42,8 @@ export class RegisterPage implements OnInit {
         console.error(error);
       }
     );
-            this.router.navigate(['/login']);
-  }
 
+    // Redirigir al usuario a la página de inicio de sesión después del registro exitoso
+    this.router.navigate(['/login']);
+  }
 }
