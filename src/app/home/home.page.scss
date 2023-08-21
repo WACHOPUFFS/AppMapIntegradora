@@ -4,8 +4,8 @@ ion-content {
   .main_content_div {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centra horizontalmente los elementos en el contenedor */
-    justify-content: center; /* Centra verticalmente los elementos en el contenedor */
+    align-items: center;
+    justify-content: center;
     height: 100vh;
 
     .menu_btn {
@@ -21,12 +21,30 @@ ion-content {
       background-color: transparent;
       opacity: 1;
       transition: opacity 150ms ease-in;
+      border-radius: 20px; /* Add rounded border */
+      overflow: hidden; /* Ensure content inside doesn't protrude */
+      
     }
 
+
     .bienvenido {
-      font-size: 18px; /* Reduzco el tamaño del texto */
+      font-size: 18px;
       color: white;
       font-weight: 600;
+    }
+
+    .button_div {
+      display: flex;
+      
+      align-items: center;
+      margin-top: -120px;
+      
+
+      ion-button {
+        margin-top: 10px; 
+        --background: red; 
+        --color: white; 
+      }
     }
   }
 }

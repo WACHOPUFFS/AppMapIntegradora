@@ -3,47 +3,57 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register', 
+  selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
 
-  // Objeto para almacenar la información del usuario
   usuario = {
-    nombreU: '', 
-    nombreC: '', 
-    correoElectronico: '', 
+    nombreU: '',
+    nombreC: '',
+    correoElectronico: '',
     contrasena: '',
+    confirmarContrasena: '', // Nuevo campo para confirmar la contraseña
   };
 
-  
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
-    
   }
 
-  // Método para registrar al usuario
-  registrarUsuario() {
-    const data = {
-      nombreUsuario: this.usuario.nombreU,
-      nombreCompleto: this.usuario.nombreC,
-      correo: this.usuario.correoElectronico,
-      contraseña: this.usuario.contrasena,
-    };
-
-    // Realizar una solicitud HTTP POST al servidor para registrar al usuario
-    this.http.post('http://localhost:3000/registrar', data).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (error) => {
-        console.error(error);
-      }
+  camposCompletos(): boolean {
+    return (
+      this.usuario.nombreU &&
+      this.usuario.nombreC && 
+      this.usuario.correoElectronico &&
+      this.usuario.correoElectronico.includes('@') &&
+      this.usuario.contrasena &&
+      this.usuario.confirmarContrasena === this.usuario.contrasena // Verificar confirmación de contraseña
     );
+  }
 
-    // Redirigir al usuario a la página de inicio de sesión después del registro exitoso
-    this.router.navigate(['/login']);
+  registrarUsuario() {
+    if (this.camposCompletos()) {
+      const data = {
+        nombreUsuario: this.usuario.nombreU,
+        nombreCompleto: this.usuario.nombreC,
+        correo: this.usuario.correoElectronico,
+        contraseña: this.usuario.contrasena,
+      };
+
+      this.http.post('http://localhost:3000/registrar', data).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+
+      this.router.navigate(['/login']);
+    } else {
+      console.log('Por favor complete todos los campos obligatorios y verifique el correo electrónico y la contraseña.');
+    }
   }
 }
